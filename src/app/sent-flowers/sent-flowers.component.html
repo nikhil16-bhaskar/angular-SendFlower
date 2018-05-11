@@ -1,0 +1,9 @@
+<mat-tab-group *ngIf = "!onBooking">
+  <mat-tab label = "New Bookings">
+    <app-new-bookings (newBooking) = "onBooking = true" ></app-new-bookings>
+  </mat-tab>
+  <mat-tab label = "Old Bookings">
+    <app-old-bookings></app-old-bookings>
+  </mat-tab>
+</mat-tab-group>
+<app-start-booking *ngIf = "onBooking" (bookingExit) = "onBooking = false"></app-start-booking>

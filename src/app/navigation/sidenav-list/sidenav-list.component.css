@@ -1,0 +1,10 @@
+a {
+    text-decoration: none;  /* for no underlining */ 
+    color: white;
+}
+
+a:hover,
+a:active{
+   color : lightslategray; 
+}
+
