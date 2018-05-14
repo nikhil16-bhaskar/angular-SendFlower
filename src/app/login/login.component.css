@@ -1,3 +1,56 @@
 mat-form-field{
     width: 300px;
 }
+.body{
+    background-color: #800000;
+}
+.app-header{
+    color: #fff;
+    background-color: #800000;
+    text-align:center;
+    padding: 1%;
+    -webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+.app-header1{
+    color: #fff;
+    background-color: #800000;
+    background:url(https://i.pinimg.com/originals/e3/a1/28/e3a1285fc5ed8634d268c4c9b8aa2813.jpg);
+    text-align:center;
+    padding: 1%;
+    -webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+.login-container{
+    width:500px;
+    height:500px;
+    background-color: #fff;
+    -webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+.login-box-header{
+    width: auto;
+    height:20%;
+    background-color:#673ab7;
+    text-align:center;
+    vertical-align: middle;
+    font-size: 3em;
+    padding: 2%;
+    color:#fff;
+}
+.login-box-body{
+    width:auto;
+    height:100%;
+    padding: 5% 5% 5% 5%;
+    color: #d2d2d2;
+}
+.login-button{
+    width:75%;
+    background-color: #673ab7;
+    font-size: 1.5em;
+    color:#fff;
+    text-align: center
+}

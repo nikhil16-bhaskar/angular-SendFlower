@@ -1,5 +1,45 @@
+<!--<section class="signup-form">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input type="email" matInput placeholder="Your email" ngModel name="email" email required #emailInput="ngModel">
+      <mat-error *ngIf="emailInput.hasError('required')">Field not be empty</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">E-mail is invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="should be atleast 6 characters long">
+        <input type="password" matInput placeholder="Your password" ngModel="password" password required minlength="6" #pwInput="ngModel"> 
+        <mat-hint alogn="end"> {{pwInput.value?.length}}/ 6</mat-hint>
+        <mat-error>Has to be 6 character fxLayoutAlign</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Your bday" [matDatepicker]="picker" 
+        [max]="maxDate" ngModel name="bday" required>
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker-toggle #picker></mat-datepicker-toggle>
+      </mat-form-field>
+
+      
+        <mat-checkbox ngModel name="agree" required color="primary">
+          Agree to Terms and Conditions.
+        </mat-checkbox>
+      
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">submit</button>
+  </form>
+</section>-->
+<div class="app-header">
+  <h1 class="app-heading">Signup Form</h1>
+</div>
+<div class="app-header1">
+    
+
 <section class="signup-form">
   <form fxLayout = "column" fxLayoutAlign = "center center" fxLayoutGap = "10px" #signupForm = "ngForm" (ngSubmit) = "onSubmit(signupForm)">
+   <div class="signup-container">
+
+    <div class="signup-box-header">
+      Send Flowers Signup
+    </div>
+
+    <div class="signup-box-body">
     <mat-form-field >
       <input 
         type = "email"
@@ -42,9 +82,14 @@
     </mat-form-field>
     
       <mat-checkbox  name = "agree" required color = "primary" ngModel>Agree to terms and Conditions</mat-checkbox>
-    
-    <button type = "submit"  mat-raised-button color="primary" [disabled] = "signupForm.invalid">Submit </button>
+    <br/><br/>
+    <button type = "submit"  mat-raised-button color="primary" [disabled] = "signupForm.invalid" class="signup-button"><mat-icon>input</mat-icon>Submit </button>
+  </div>
+  </div>
   </form>
 </section> 
+</div>
+
+
 
 
