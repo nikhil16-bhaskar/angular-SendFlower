@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SentflowerService } from '../sent-flower.service';
 import { Order } from '../order.model';
 
@@ -9,7 +8,7 @@ import { Order } from '../order.model';
   styleUrls: ['./new-bookings.component.css']
 })
 export class NewBookingsComponent implements OnInit {
-  // @Output() newBooking = new EventEmitter<void>();
+  @Output() newBooking = new EventEmitter<void>();
   orders: Order[] = [];
   
   constructor(private sentflowerService: SentflowerService) { }
@@ -17,8 +16,8 @@ export class NewBookingsComponent implements OnInit {
   ngOnInit() {
     this.orders = this.sentflowerService.getAvailableBookings();
   }
-  onBooking(form: NgForm){
-    this.sentflowerService.startBooking(form.value.booking);
+  onBooking(){
+    this.newBooking.emit();
   }
 
 }
