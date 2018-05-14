@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { SentflowerService } from './sent-flower.service';
 
 @Component({
   selector: 'app-sent-flowers',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentFlowersComponent implements OnInit {
   onBooking = false;
-  constructor() { }
+  bookingSubscription: Subscription;
+  constructor(private sentflowerService: SentflowerService) { }
 
   ngOnInit() {
+    this.bookingSubscription = this.sentflowerService.bookingChanged.subscribe(
+      booking => {
+        if (booking){
+        this.onBooking = true;
+        }
+        else{
+          this.onBooking = false;
+        }
+      }
+    );
   }
 
 }
