@@ -3,41 +3,61 @@ import { Subject } from 'rxjs/Subject';
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
     authChange = new Subject<boolean>();
     // private user: User;
     private user: User;
+    private id;
+    constructor(private router: Router, private http: HttpClient) { }
+    public registerUser(data) {
+        this.user = data;
+        console.log(this.user);
+        this.http.post('http://localhost:3000/api/addClient', data, { observe: 'response' })
+            .subscribe(response => {
+                let status = response.status; 
+                console.log("Body " + response.body);
+                if (response.body == null)
+                    alert("User Already exists");
+                else {
+                    console.log(response.body);
+                    this.id = response.body;
+                    this.authChange.next(true);
+                    this.router.navigate(['/sent-flowers']);
+                }
+            }, error => {
+                alert(`Error asds is there ${error.error.message}`);
+                this.user = null;
+            });
+     
+    }
 
-    constructor(private router: Router) {}
-    registerUser(authData: AuthData){
+    login(authData: AuthData) {
         this.user = {
             email: authData.email,
-            userId: Math.round(Math.random() * 10000).toString()
+            password: authData.password
         };
         this.authChange.next(true);
         this.router.navigate(['/sent-flowers']);
     }
 
-    login(authData: AuthData)
-    {
-        this.user = {
-            email: authData.email,
-            userId: Math.round(Math.random() * 10000).toString()
-        };    
-        this.authChange.next(true);
-        this.router.navigate(['/sent-flowers']);
+    registerId(clientId) {
+        this.id = clientId;
+        console.log(clientId);
     }
-    logout()
-    {
+    getId() {
+        return this.id;
+    }
+    logout() {
         this.user = null;
         this.authChange.next(false);
-        this.router.navigate(['/login']);
+        this.router.navigate(['']);
     }
 
     getUser() {
-        return {...this.user};
+        return { ...this.user };
     }
 
     isAuth() {

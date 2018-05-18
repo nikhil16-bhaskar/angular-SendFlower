@@ -1,3 +1,6 @@
+<div>
+    <button mat-button (click)="showData()" >Show record</button>
+</div> 
 <div fxLayoutAlign = "center center">
   <mat-form-field fxFlex = "40%">
     <input matInput type = "text" (keyup) = "doFilter($event.target.value)" placeholder = "Filter">
@@ -19,9 +22,9 @@
     <mat-cell *matCellDef = "let element">{{ element.quantity | number }}</mat-cell>
   </ng-container>
   
-  <ng-container matColumnDef = "state">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
-    <mat-cell *matCellDef = "let element">{{ element.state }}</mat-cell>
+  <ng-container matColumnDef = "address">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+    <mat-cell *matCellDef = "let element">{{ element.address }}</mat-cell>
   </ng-container>    
 
   <mat-header-row *matHeaderRowDef = "displayedColumns"></mat-header-row>

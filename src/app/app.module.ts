@@ -19,6 +19,7 @@ import { StartBookingComponent } from './sent-flowers/start-booking/start-bookin
 import { StopBookingComponent } from './sent-flowers/start-booking/stop-booking/stop-booking.component';
 import { AuthService } from './auth.service';
 import { SentflowerService } from './sent-flowers/sent-flower.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SentflowerService } from './sent-flowers/sent-flower.service';
     MaterialModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [ AuthService, SentflowerService ],
   bootstrap: [AppComponent],
