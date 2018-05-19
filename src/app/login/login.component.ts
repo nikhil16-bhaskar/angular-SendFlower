@@ -42,7 +42,8 @@ onSubmit (form: NgForm){
     }
     else
     {
-      alert("Sign up first");
+      swal("SignUp First","","error");
+      // alert("Sign up first");
     }
     console.log(response);
   });

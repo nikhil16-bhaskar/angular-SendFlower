@@ -12,8 +12,8 @@ export class SignupComponent implements OnInit {
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
+    // this.maxDate = new Date();
+    // this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   onSubmit(form: NgForm) {

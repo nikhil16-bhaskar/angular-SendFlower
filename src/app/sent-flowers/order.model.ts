@@ -5,5 +5,5 @@ export interface Order {
     quantity: number;
     // calories: number;
     date?: Date; // ? is for optional
-    state?: 'completed' | 'cancelled' | null;
+    // state?: 'completed' | 'cancelled' | null;
 }

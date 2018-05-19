@@ -19,8 +19,9 @@ export class AuthService {
             .subscribe(response => {
                 let status = response.status; 
                 console.log("Body " + response.body);
-                if (response.body == null)
-                    alert("User Already exists");
+                if (response.body == null){
+                    // alert("User Already exists");
+                    swal("User Already Exists","","error"); }
                 else {
                     console.log(response.body);
                     this.id = response.body;

@@ -53,7 +53,7 @@ router.get('/searchFlowers', function (req, res) {
   flowerData.find({'id' : req.query.id}).then(function (data) {
     console.log(data);
     res.send(JSON.stringify(data));
-  });
+  }); 
 });
 
 router.get('/faculty', function (req, res) {

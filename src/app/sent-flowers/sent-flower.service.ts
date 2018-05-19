@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Order } from './order.model';
 import { HttpClient } from '@angular/common/http';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+// import * as sweetalert from 'sweetalert';
+// import { SweetAlert } from 'sweetalert/typings/core';
+// import swal from 'sweetalert';
 
 @Injectable()
 export class SentflowerService {
+
     bookingChanged = new Subject<Order>();
     private availableBookings: Order[] = [
         { id: 'roses', name: 'roses', quantity: 50 },
@@ -16,23 +21,52 @@ export class SentflowerService {
     private currentBooking: Order;
     private bookings: Order[] = [];
     private userRecord: any;
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,public dialog: MatDialog) { }
 
     getAvailableBookings() {
         return this.availableBookings.slice();
     }
 
     startBooking(data: any) {
+        if(data.quantity<1){
+            swal({
+                title: "Invalid Quantity",
+                text: "Quantity should be greater than 0",
+                icon: "warning", 
+                dangerMode: true               
+            })
+            return false;
+        }
         // this.currentBooking = this.availableBookings.find(book => book.id === selectedId);
         // this.bookingChanged.next({ ...this.currentBooking });
         console.log(data);
-        this.http.post('http://localhost:3000/api/insertData', data, { observe: 'response' })
-            .subscribe(response => {
-                console.log(response.body);
-                this.userRecord = response.body;
-                alert("Added Succesfully");
-
-            });
+         swal({
+                    title: "Confirmation!",
+                    text: "Are you sure you want to book?",
+                    icon: "warning",
+                      buttons: ['cancel','confirm'],
+                     dangerMode: true,
+                })
+                .then((confirmedYes) => {
+                    if (confirmedYes) {
+                        this.http.post('http://localhost:3000/api/insertData', data, { observe: 'response' })
+                    .subscribe(response => {
+                    console.log(response.body);
+                    this.userRecord = response.body;
+                });
+                swal({
+                    title: "Booked Successfully",
+                    icon: "success",
+                })
+                }
+                 else {
+                        swal({
+                            title: "Booking cancelled",
+                            icon: "success",
+                        })
+                    }
+                });
+        
     }
 
     getBookedData(id) {
@@ -53,7 +87,7 @@ export class SentflowerService {
         this.bookings.push({
             ...this.currentBooking,
             date: new Date(),
-            state: 'completed'
+            // state: 'completed'
         });
         this.currentBooking = null;
         this.bookingChanged.next(null);
@@ -64,7 +98,7 @@ export class SentflowerService {
             ...this.currentBooking,
             quantity: Math.round(this.currentBooking.quantity * (progress / 100)),
             date: new Date(),
-            state: 'cancelled'
+            // state: 'cancelled'
         });
         this.currentBooking = null;
         this.bookingChanged.next(null);

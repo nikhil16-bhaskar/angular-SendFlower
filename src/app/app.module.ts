@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import swal from 'sweetalert';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { SignupComponent } from './signup/signup.component';
@@ -20,6 +20,8 @@ import { StopBookingComponent } from './sent-flowers/start-booking/stop-booking/
 import { AuthService } from './auth.service';
 import { SentflowerService } from './sent-flowers/sent-flower.service';
 import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    
   ],
   providers: [ AuthService, SentflowerService ],
   bootstrap: [AppComponent],
